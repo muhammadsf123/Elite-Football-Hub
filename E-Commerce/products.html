@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Explore a wide range of football gear, including match balls, jerseys, boots, and more at FootballShop. High-quality products for every football enthusiast.">
+    <title>Football Products - Shop Now</title>
+    <link rel="stylesheet" href="css/products.css">
+    <script defer src="js/cart.js"></script> <!-- Link to the new JS file -->
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <header>
+        <div class="navbar container">
+            <div class="logo">
+                <img src="css/media/images/logo.png" alt="Elite Football Hub Logo">
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Football Gear</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                </ul>
+            </nav>
+            <div class="cart">
+                <a href="checkout.html"
+                    style="display: flex; align-items: center; text-decoration: none; color: white;">
+                    <img src="css/media/images/shoppingcartlogo.png" alt="Cart Icon"
+                        style="width: 45px; height: 45px; margin-right: 5px;">
+                    <!-- Remove or comment out the cart count span -->
+                    <!-- <span id="cart-count"
+                        style="background-color: red; color: white; padding: 2px 6px; border-radius: 50%; font-size: 14px;">0</span> -->
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section"
+        style="background-image: url('css/media/images/backgroundimage2.jpg'); background-size: cover;">
+        <div class="container">
+            <h1 class="section-title">Our Premium Football Products</h1>
+            <p class="section-description">Discover top-tier football gear for every player, from the aspiring amateur
+                to the seasoned pro.</p>
+
+            <div class="products-grid">
+                <!-- Product Cards -->
+                <div class="product-card" data-name="Nike Premier League Football" data-price="7.99">
+                    <img src="css/media/images/product1.png" alt="Official Match Football">
+                    <h3>Nike Premier League Football</h3>
+                    <p>High-quality, durable, FIFA-approved match ball.</p>
+                    <span class="price">£7.99</span>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Nike Mercurial 2024 Next Gen" data-price="15.99">
+                    <img src="css/media/images/product2.png" alt="Football Boots">
+                    <h3>Nike Mercurial 2024 Next Gen</h3>
+                    <p>Lightweight and comfortable boots designed for ultimate performance.</p>
+                    <span class="price">£15.99</span>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Mens Elite Tottenham Hotspur Home Shirt 2024/25"
+                    data-price="35.99">
+                    <img src="css/media/images/product3.png" alt="Football Jersey">
+                    <h3>Mens Elite Tottenham Hotspur Home Shirt 2024/25</h3>
+                    <p>Show your support with our high-quality official team jersey.</p>
+                    <span class="price">£35.99</span>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Mens Tottenham Hotspur 2024/25 Kit" data-price="54.99">
+                    <img src="css/media/images/product4.png" alt="Football Kit">
+                    <h3>Mens Tottenham Hotspur 2024/25 Kit</h3>
+                    <p>Support Tottenham Hotspur in style with the sleek, high-performance men's kit.</p>
+                    <span class="price">£54.99</span>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+
+                <div class="product-card" data-name="Goalkeeper Gloves" data-price="7.99">
+                    <img src="css/media/images/product5.png" alt="Goalkeeper Gloves">
+                    <h3>Goalkeeper Gloves</h3>
+                    <p>Firm grip and comfort for superior goal protection.</p>
+                    <span class="price">£7.99</span>
+                    <button class="btn add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content container">
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Products</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact Us</h3>
+                <p>Email: support@footballshop.com</p>
+                <p>Phone: 123-456-7890</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 FootballShop. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Load cart from localStorage or initialize it
+        let cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+        // Function to add item to the cart
+        function addToCart(product) {
+            cartItems.push(product);
+            localStorage.setItem('cartItems', JSON.stringify(cartItems));
+            // updateCartCount(); // Commented out since we're removing the counter
+        }
+
+        // Update the cart count displayed in the navbar
+        // function updateCartCount() {
+        //     const cartCount = document.getElementById('cart-count');
+        //     cartCount.textContent = cartItems.length;
+        // }
+
+        // Event listeners for product buttons (assuming each product has a button)
+        document.addEventListener('DOMContentLoaded', () => {
+            const productButtons = document.querySelectorAll('.add-to-cart'); // Adjust the selector to match your HTML
+            productButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const productName = button.closest('.product-card').dataset.name; // Get product name from data attribute
+                    const productPrice = button.closest('.product-card').dataset.price; // Get product price from data attribute
+
+                    // Add the product to the cart
+                    addToCart({ name: productName, price: productPrice });
+
+                    // Optionally, you can show a notification or alert
+                    alert(`${productName} has been added to your cart!`);
+                });
+            });
+
+            // Initialize cart count
+            // updateCartCount(); // Commented out since we're removing the counter
+        });
+    </script>
+
+</body>
+
+</html>
